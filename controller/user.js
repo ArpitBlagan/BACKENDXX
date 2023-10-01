@@ -48,7 +48,7 @@ exports.check=async(req,res)=>{
     if(token){
         jwt.verify(token,process.env.ACCESS_TOKEN,(err,decoded)=>{
             if(decoded){
-                req.user=decoded;
+                req.user=decoded.user;
             }
             else{
                 return res.json({message:"not authorized"});
