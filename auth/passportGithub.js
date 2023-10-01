@@ -7,7 +7,7 @@ passport.use(new GitHubStrategy(
         clientSecret:process.env.GIT_SEC,
         callbackURL:'https://xeroo.onrender.com/api/v1/auth/github/callback'
     },async(req,accessToken, refreshToken, profile, done)=>{
-        console.log(profile,profile.emails);
+        console.log(profile);
         const defaultUser={
             github_id:profile.id,
             name:profile.username,

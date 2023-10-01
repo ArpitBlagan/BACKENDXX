@@ -14,11 +14,12 @@ passport.use(
         passReqToCallback: true,
       },
       async (req, accessToken, refreshToken, profile, cb) => {
+        console.log(profile);
         const defaultUser = {
           name: `${profile.name.givenName} ${profile.name.familyName}`,
           email: profile.emails[0].value,
           google_id: profile.id,
-        };console.log(defaultUser);
+        };
         const user=await userDB.find({email:defaultUser.email});
         console.log(user);
         if(!user||user.length==0){
