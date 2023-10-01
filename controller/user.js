@@ -44,7 +44,7 @@ exports.info=async(req,res)=>{
     res.json({message:"working"});
 }
 exports.check=async(req,res)=>{
-    console.log(req.cookies);
+    console.log(req.user);
     if(req.user){return res.json({message:"authorized",user:req.user})}
     const token=req.cookies.jwt;console.log(token);
     if(token){
@@ -57,7 +57,7 @@ exports.check=async(req,res)=>{
             }   
 
         });
-        const user=awaituserDB.findbyId(req.user.id);
+        const user=await userDB.findbyId(req.user.id);
         if(user){
             return res.json({message:"authorized",data,user});
         }
