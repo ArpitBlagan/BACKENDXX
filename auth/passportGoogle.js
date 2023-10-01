@@ -3,7 +3,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 const userDB = require("../models/User");
 
-const GOOGLE_CALLBACK_URL = "http://localhost:5001/api/v1/auth/google/callback";
+const GOOGLE_CALLBACK_URL = "https://xeroo.onrender.com/api/v1/auth/google/callback";
 
 passport.use(
     new GoogleStrategy(
