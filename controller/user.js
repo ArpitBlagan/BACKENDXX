@@ -56,6 +56,7 @@ exports.check=async(req,res)=>{
             
         });console.log(req.user);
                 const user=await userDB.findById(req.user.id);
+                console.log(user);
                 if(user){
                     return res.json({message:"authorized",data,user});
                 }else{
