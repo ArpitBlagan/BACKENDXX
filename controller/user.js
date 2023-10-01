@@ -45,6 +45,7 @@ exports.info=async(req,res)=>{
 }
 exports.check=async(req,res)=>{
     const token=req.cookies.jwt;
+    console.log("Cookies",req.cookies);
     if(token){
         jwt.verify(token,process.env.ACCESS_TOKEN,(err,decoded)=>{
             if(decoded){
