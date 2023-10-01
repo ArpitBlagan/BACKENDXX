@@ -24,7 +24,7 @@ passport.use(new GitHubStrategy(
               return done(null, new_user);
             }
         }
-        if (user&&user[0]){req.user=user&&user[0]; return done(null, user&&user[0]);}
+        if (user&&user[0]){req.user=user[0]; return done(null,user[0]);}
     }   
 ))
 passport.serializeUser(function(user,cb){
