@@ -48,19 +48,19 @@ exports.check=async(req,res)=>{
     if(token){
         jwt.verify(token,process.env.ACCESS_TOKEN,(err,decoded)=>{
             if(decoded){
-                req.user=decoded;console.log(req.user);
+                req.user=decoded;
+            }
+            else{
+                return res.json({message:"not authorized"});
+            }   
+            
+        });console.log(req.user);
                 const user=await userDB.findById(req.user.id);
                 if(user){
                     return res.json({message:"authorized",data,user});
                 }else{
                     return res.json({message:"not authorized"});
                 }
-            }
-            else{
-                return res.json({message:"not authorized"});
-            }   
-
-        });
     }
     return res.send("good");    
 }
