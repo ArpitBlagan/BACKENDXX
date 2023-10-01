@@ -2,8 +2,8 @@ const express=require('express');
 const { register,login,info,check } =require('./controller/user');
 const passport = require('passport');
 const Router=express.Router();
-const successLoginUrl = "http://localhost:5173";
-const errorLoginUrl = "http://localhost:5173/login";
+const successLoginUrl = "http://localhost:5173/main";
+const errorLoginUrl = "http://localhost:5173";
 Router.route('/register').post(register);
 Router.route('/login').post(login);
 Router.get(
