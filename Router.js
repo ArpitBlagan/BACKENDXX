@@ -19,13 +19,6 @@ passport.authenticate('github', {
   successRedirect: successLoginUrl,}),
 function(req, res) {
   // Successful authentication, redirect home.
-    res.cookie("name",req.user.name,{
-        //30 days in milisecond
-        httpOnly:true,
-        sameSite: 'none',
-        secure:true
-    });
-  console.log("User: ", req.user);
       res.json({user:req.user});
 });
 Router.get(
@@ -36,13 +29,7 @@ Router.get(
       successRedirect: successLoginUrl,
     }),
     (req, res) => {
-      console.log("User: ", req.user);
-      res.cookie("name",req.user.name,{
-        //30 days in milisecond
-        httpOnly:true,
-        sameSite: 'none',
-        secure:true
-    });
+      
       res.json({user:req.user});
     }
 );
