@@ -2,8 +2,8 @@ const express=require('express');
 const { register,login,info,check } =require('./controller/user');
 const passport = require('passport');
 const Router=express.Router();
-const successLoginUrl = "https://65198cff99e6aa618a413198--peaceful-taffy-b3c774.netlify.app/main";
-const errorLoginUrl = "https://65198cff99e6aa618a413198--peaceful-taffy-b3c774.netlify.app";
+const successLoginUrl = "https://6519909490379f658030341f--stirring-taiyaki-74b8f3.netlify.app/main";
+const errorLoginUrl = "https://6519909490379f658030341f--stirring-taiyaki-74b8f3.netlify.app";
 Router.route('/register').post(register);
 Router.route('/login').post(login);
 Router.get(
@@ -25,7 +25,7 @@ function(req, res) {
             sameSite: 'none',
             secure:true
         });
-        res.redirect("https://65198cff99e6aa618a413198--peaceful-taffy-b3c774.netlify.app/first");
+        res.redirect("https://6519909490379f658030341f--stirring-taiyaki-74b8f3.netlify.app/first");
 });
 Router.get(
     "/auth/google/callback",
@@ -40,7 +40,7 @@ Router.get(
             sameSite: 'none',
             secure:true
         });
-        res.redirect("https://65198cff99e6aa618a413198--peaceful-taffy-b3c774.netlify.app/first");
+        res.redirect("https://6519909490379f658030341f--stirring-taiyaki-74b8f3.netlify.app/first");
     }
 );
 // Router.get('/info',passport.authenticate('jwt', { session: false }),info);
