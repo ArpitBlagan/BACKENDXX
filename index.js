@@ -29,7 +29,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
 app.use(cors({
-  origin:['*','http://localhost:5173','http://localhost:5001','https://accounts.google.com'],
+  origin:['*','http://localhost:5173','http://localhost:5001','https://accounts.google.com','https://651940918339e837a02e3661--courageous-boba-83d994.netlify.app/'],
   credentials:true
 }));app.use(cookie());
 app.use(express.urlencoded({extended:true}));
