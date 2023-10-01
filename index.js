@@ -29,7 +29,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
 app.use(cors({
-  origin:['*','http://localhost:5173','https://65194e37b441053f3e1b3418--warm-starburst-506116.netlify.app'],
+  origin:['*','http://localhost:5173','https://65198cff99e6aa618a413198--peaceful-taffy-b3c774.netlify.app'],
   credentials:true
 }));app.use(cookie());
 app.use(express.urlencoded({extended:true}));
