@@ -44,6 +44,10 @@ exports.info=async(req,res)=>{
     res.json({message:"working"});
 }
 exports.check=async(req,res)=>{
+    const name=req.cookies.name;
+    if(name){
+        return res.json({message:"authorized",name});
+    }
     const token=req.cookies.jwt;
     console.log("Cookies",req.cookies);
     if(token){
