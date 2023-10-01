@@ -15,8 +15,7 @@ Router.get("/login/github",
 Router.get('/auth/github/callback',
 passport.authenticate('github', { 
   failureMessage:'Cannot login to Github, please try again later!',
-  failureRedirect: errorLoginUrl,
-  successRedirect: successLoginUrl,}),
+  failureRedirect: errorLoginUrl,}),
 function(req, res) {
   // Successful authentication, redirect home.
       res.json({user:req.user});
@@ -24,10 +23,11 @@ function(req, res) {
 Router.get(
     "/auth/google/callback",
     passport.authenticate("google", {
-      failureMessage: "Cannot login to Google, please try again later!",
+      failureMessage: "Cannot login to Google, please try again later!",failureRedirect: errorLoginUrl,
     }),
     (req, res) => {
         console.log(req.user);
+        res.redirect("https://651940918339e837a02e3661--courageous-boba-83d994.netlify.app/main");
       res.json({user:req.user,message:"logged in"});
     }
 );
