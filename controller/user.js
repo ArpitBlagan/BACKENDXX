@@ -63,7 +63,7 @@ exports.check=async(req,res)=>{
                 const user=await userDB.findById(req.user.id);
                 console.log(user);
                 if(user){
-                    return res.json({message:"authorized",user.name});
+                    return res.json({message:"authorized",name:user.name});
                 }else{
                     return res.json({message:"not authorized"});
                 }
