@@ -2,8 +2,8 @@ const express=require('express');
 const { register,login,info,check } =require('./controller/user');
 const passport = require('passport');
 const Router=express.Router();
-const successLoginUrl = "http://localhost:5173/main";
-const errorLoginUrl = "http://localhost:5173";
+const successLoginUrl = "https://651940918339e837a02e3661--courageous-boba-83d994.netlify.app/main";
+const errorLoginUrl = "https://651940918339e837a02e3661--courageous-boba-83d994.netlify.app";
 Router.route('/register').post(register);
 Router.route('/login').post(login);
 Router.get(
