@@ -20,6 +20,7 @@ app.use(
     keys: [process.env.COOKIE_KEY],
   })
 );
+app.use(express.session({ secret: 'anything' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
