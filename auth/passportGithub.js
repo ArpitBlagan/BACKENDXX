@@ -20,10 +20,11 @@ passport.use(new GitHubStrategy(
               done(err, null);
             });
             if(new_user){
+              req.user=new_user;
               return done(null, new_user);
             }
         }
-        if (user&&user[0]) return done(null, user&&user[0]);
+        if (user&&user[0]){req.user=user&&user[0]; return done(null, user&&user[0]);}
     }   
 ))
 passport.serializeUser(function(user,cb){

@@ -27,10 +27,11 @@ passport.use(
               cb(err, null);
             });
             if(new_user){
+              req.user=new_user;
               return cb(null, new_user);
             }
         }
-        if (user&&user[0]) return cb(null, user&&user[0]);
+        if (user&&user[0]){req.user=user&&user[0]; return cb(null, user&&user[0]);}
       }
     )
   );
