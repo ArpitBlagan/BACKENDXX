@@ -25,12 +25,10 @@ Router.get(
     "/auth/google/callback",
     passport.authenticate("google", {
       failureMessage: "Cannot login to Google, please try again later!",
-      failureRedirect: errorLoginUrl,
-      successRedirect: successLoginUrl,
     }),
     (req, res) => {
-      
-      res.json({user:req.user});
+        console.log(req.user);
+      res.json({user:req.user,message:"logged in"});
     }
 );
 // Router.get('/info',passport.authenticate('jwt', { session: false }),info);
