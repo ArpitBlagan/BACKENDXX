@@ -44,8 +44,6 @@ exports.info=async(req,res)=>{
     res.json({message:"working"});
 }
 exports.check=async(req,res)=>{
-    console.log("not working",req.user);
-    if(req.cookies.google.com||req.cookies.github.com){return res.json({message:"authorized",user:req.user})}
     const token=req.cookies.jwt;
     if(token){
         jwt.verify(token,process.env.ACCESS_TOKEN,(err,decoded)=>{
@@ -65,6 +63,5 @@ exports.check=async(req,res)=>{
             return res.json({message:"not authorized"});
         }
     }
-    return res.json({message:"not authorized"});
-    
+    return res.send("good");    
 }
