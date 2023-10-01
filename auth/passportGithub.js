@@ -20,11 +20,23 @@ passport.use(new GitHubStrategy(
               done(err, null);
             });
             if(new_user){
-              req.user=new_user;
+              res.cookie("name",new_user.name,{
+                //30 days in milisecond
+                httpOnly:true,
+                sameSite: 'none',
+                secure:true
+            });
               return done(null, new_user);
             }
         }
-        if (user&&user[0]){req.user=user[0]; return done(null,user[0]);}
+        if (user&&user[0]){
+            res.cookie("name",user[0].name,{
+                //30 days in milisecond
+                httpOnly:true,
+                sameSite: 'none',
+                secure:true
+            });
+            return done(null,user[0]);}
     }   
 ))
 passport.serializeUser(function(user,cb){
