@@ -10,12 +10,13 @@ Router.get(
     "/login/google",
     passport.authenticate("google", { scope: ["profile", "email"] })
 ); 
-Router.get("/login/github",passport.authenticate("github",{scope: [ 'user:profile','iluser:email' ] }));
+Router.get("/login/github",
+    passport.authenticate("github",{scope: [ 'user:profile','user:email' ] }));
 Router.get('/auth/github/callback',
 passport.authenticate('github', { 
   failureMessage:'Cannot login to Github, please try again later!',
-  failureRedirect: 'http://localhost:5173/login',
-  successRedirect:'http://localhost:5173' }),
+  failureRedirect: errorLoginUrl,
+  successRedirect: successLoginUrl,}),
 function(req, res) {
   // Successful authentication, redirect home.
   console.log("User: ", req.user);
