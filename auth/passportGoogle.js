@@ -28,22 +28,12 @@ passport.use(
               cb(err, null);
             });
             if(new_user){
-                res.cookie("name",new_user.name,{
-                //30 days in milisecond
-                httpOnly:true,
-                sameSite: 'none',
-                secure:true
-            });
+                
               return cb(null, new_user);
             }
         }
         if (user&&user[0]){
-            res.cookie("name",user[0].name,{
-                //30 days in milisecond
-                httpOnly:true,
-                sameSite: 'none',
-                secure:true
-            });
+            
             return cb(null, user[0]);}
       }
     )
