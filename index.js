@@ -19,7 +19,9 @@ app.use(
     secret: process.env.COOKIE_KEY,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true } 
+    cookie: { httpOnly:true,
+            sameSite: 'none',
+            secure:true } 
 
   })
 );
