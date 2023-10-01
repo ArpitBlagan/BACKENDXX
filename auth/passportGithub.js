@@ -12,7 +12,7 @@ passport.use(new GitHubStrategy(
             github_id:profile.id,
             name:profile.username,
         }
-        const user=await userDB.find({name:defaultUser.name});
+        const user=await userDB.find({github_id:defaultUser.github_id});
         console.log(user);
         if(!user||user.length==0){
             const new_user=await userDB.create(defaultUser).catch((err)=>{
@@ -28,11 +28,11 @@ passport.use(new GitHubStrategy(
     }   
 ))
 passport.serializeUser(function(user,cb){
-    console.log(user);
-    cb(null,user._id);
+    console.log("serialize",user);
+    cb(null,user.id);
 })
 passport.deserializeUser(async (id, cb) => {
-    console.log(id)
+    console.log("id",id)
     const user = await userDB.find({github_id:id}).catch((err) => {
       console.log("Error deserializing", err);
       cb(err, null);
