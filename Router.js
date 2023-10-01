@@ -18,7 +18,14 @@ passport.authenticate('github', {
   failureRedirect: errorLoginUrl,}),
 function(req, res) {
   // Successful authentication, redirect home.
-      res.json({user:req.user});
+   console.log("user",req.user);
+        res.cookie("name",req.user.name ,{
+            //30 days in milisecond
+            httpOnly:true,
+            sameSite: 'none',
+            secure:true
+        });
+        res.redirect("https://65198cff99e6aa618a413198--peaceful-taffy-b3c774.netlify.app/first");
 });
 Router.get(
     "/auth/google/callback",
@@ -33,7 +40,7 @@ Router.get(
             sameSite: 'none',
             secure:true
         });
-        res.redirect("https://65198cff99e6aa618a413198--peaceful-taffy-b3c774.netlify.app/main");
+        res.redirect("https://65198cff99e6aa618a413198--peaceful-taffy-b3c774.netlify.app/first");
     }
 );
 // Router.get('/info',passport.authenticate('jwt', { session: false }),info);
