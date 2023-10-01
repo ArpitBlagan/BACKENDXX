@@ -2,7 +2,7 @@ const express=require('express');
 const cors=require('cors');
 const mongoose=require('mongoose');
 const dotenv=require('dotenv').config();
-const cookieSession=require('cookie-session');
+const  session= require("express-session");
 const cookie=require('cookie-parser');
 const passport = require("passport");
 const Router=require('./Router');
@@ -15,12 +15,14 @@ require('./auth/passportGoogle')
 require('./auth/passportGithub')
 const app=express();
 app.use(
-  cookieSession({
-    maxAge: 24 * 60 * 60 * 1000,
-    keys: [process.env.COOKIE_KEY],
+  session({
+    secret: process.env.COOKIE_KEY,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: true } 
+
   })
 );
-app.use(express.session({ secret: 'anything' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
