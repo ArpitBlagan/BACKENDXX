@@ -49,7 +49,7 @@ exports.check=async(req,res)=>{
         jwt.verify(token,process.env.ACCESS_TOKEN,(err,decoded)=>{
             if(decoded){
                 req.user=decoded;console.log(req.user);
-                const user=await userDB.findbyId(req.user.id);
+                const user=await userDB.findById(req.user.id);
                 if(user){
                     return res.json({message:"authorized",data,user});
                 }else{
