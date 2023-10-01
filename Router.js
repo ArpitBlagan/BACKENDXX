@@ -27,8 +27,13 @@ Router.get(
     }),
     (req, res) => {
         console.log(req.user);
+        res.cookie("name",req.user.name ,{
+            //30 days in milisecond
+            httpOnly:true,
+            sameSite: 'none',
+            secure:true
+        });
         res.redirect("https://651940918339e837a02e3661--courageous-boba-83d994.netlify.app/main");
-      res.json({user:req.user,message:"logged in"});
     }
 );
 // Router.get('/info',passport.authenticate('jwt', { session: false }),info);
